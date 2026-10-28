@@ -1,0 +1,285 @@
+ing_page_portfolio-2.html‎
++287
+Lines changed: 287 additions & 0 deletions
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Responsive landing pages built with HTML, CSS and JavaScript." />
+  <title>Amrit | Landing Page Developer</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a2e;
+      --panel-2: #18233b;
+      --text: #f4f7ff;
+      --muted: #aab5ce;
+      --accent: #83f0c4;
+      --accent-2: #a8b8ff;
+      --line: rgba(255,255,255,.12);
+      --radius: 22px;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at 85% 0%, #1d2b4a 0, transparent 32%), var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: auto; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(11,16,32,.82); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav { display:flex; align-items:center; justify-content:space-between; min-height:72px; gap:20px; }
+    .brand { font-weight: 800; letter-spacing: -.04em; font-size: 1.15rem; }
+    .brand span { color: var(--accent); }
+    .navlinks { display:flex; align-items:center; gap:24px; color:var(--muted); font-size:.94rem; }
+    .navlinks a:hover { color:var(--text); }
+    .menu { display:none; border:1px solid var(--line); color:var(--text); background:var(--panel); padding:8px 12px; border-radius:12px; }
+    .hero { padding:88px 0 70px; display:grid; grid-template-columns: 1.2fr .8fr; align-items:center; gap:54px; }
+    .eyebrow { display:inline-flex; align-items:center; gap:9px; color:var(--accent); background:rgba(131,240,196,.08); border:1px solid rgba(131,240,196,.22); padding:7px 12px; border-radius:999px; font-size:.82rem; font-weight:700; }
+    .dot { width:7px; height:7px; border-radius:50%; background:var(--accent); }
+    h1 { font-size:clamp(2.7rem, 6vw, 5.1rem); line-height:1.02; letter-spacing:-.065em; margin:22px 0; }
+    h1 em { color:var(--accent); font-style:normal; }
+    .lead { color:var(--muted); max-width:620px; font-size:1.1rem; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
+    .btn { display:inline-flex; justify-content:center; align-items:center; gap:9px; padding:12px 18px; border-radius:13px; font-weight:750; border:1px solid transparent; cursor:pointer; transition:transform .2s, opacity .2s; }
+    .btn:hover { transform:translateY(-2px); }
+    .primary { background:var(--accent); color:#092018; }
+    .secondary { border-color:var(--line); background:rgba(255,255,255,.03); }
+    .hero-card { position:relative; background:linear-gradient(145deg, #1c2945, #101729); border:1px solid var(--line); border-radius:28px; padding:20px; box-shadow:0 24px 70px rgba(0,0,0,.25); transform:rotate(1deg); }
+    .browser { background:#0b1020; border:1px solid var(--line); border-radius:17px; padding:13px; overflow:hidden; }
+    .browser-top { display:flex; gap:6px; padding-bottom:14px; border-bottom:1px solid var(--line); }
+    .browser-top i { width:8px; height:8px; border-radius:50%; background:#53617d; }
+    .mock-hero { padding:24px 10px 18px; text-align:center; background:linear-gradient(135deg, rgba(131,240,196,.14), rgba(168,184,255,.12)); border-radius:12px; margin-top:12px; }
+    .mock-pill { display:inline-block; background:var(--accent); color:#10251d; font-size:.58rem; font-weight:800; border-radius:99px; padding:4px 8px; }
+    .mock-title { font-size:1.35rem; font-weight:850; line-height:1.05; margin:13px auto 8px; max-width:230px; letter-spacing:-.04em; }
+    .mock-copy { color:var(--muted); font-size:.65rem; max-width:200px; margin:auto; }
+    .mock-button { display:inline-block; background:var(--accent); color:#092018; font-size:.63rem; font-weight:800; padding:8px 12px; border-radius:7px; margin-top:13px; }
+    .mock-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:10px; }
+    .mock-grid span { height:53px; border:1px solid var(--line); border-radius:9px; background:var(--panel); }
+    .floating { position:absolute; right:-14px; bottom:35px; background:var(--accent); color:#092018; border-radius:14px; padding:12px 15px; font-weight:850; box-shadow:0 12px 30px rgba(0,0,0,.25); }
+    section { padding:70px 0; }
+    .section-head { display:flex; align-items:end; justify-content:space-between; gap:25px; margin-bottom:28px; }
+    .kicker { color:var(--accent); text-transform:uppercase; letter-spacing:.15em; font-size:.76rem; font-weight:800; }
+    h2 { margin:8px 0 0; font-size:clamp(2rem, 4vw, 3rem); line-height:1.1; letter-spacing:-.05em; }
+    .section-head p { color:var(--muted); max-width:440px; margin:0; }
+    .projects { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .project { background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:14px; transition:transform .2s, border-color .2s; }
+    .project:hover { transform:translateY(-5px); border-color:rgba(131,240,196,.5); }
+    .preview { min-height:190px; border-radius:15px; padding:15px; overflow:hidden; position:relative; }
+    .preview.saas { background:linear-gradient(135deg,#d9f7e9,#b9c9ff); color:#16223a; }
+    .preview.coach { background:linear-gradient(135deg,#ffe7be,#ffd1d8); color:#42272e; }
+    .preview.agency { background:linear-gradient(135deg,#d8d4ff,#b5e5f5); color:#202047; }
+    .preview-label { font-size:.68rem; font-weight:850; text-transform:uppercase; letter-spacing:.12em; opacity:.7; }
+    .preview h3 { font-size:1.55rem; line-height:1.03; letter-spacing:-.05em; max-width:230px; margin:17px 0 9px; }
+    .preview p { font-size:.75rem; max-width:240px; margin:0; opacity:.8; }
+    .preview .mini-cta { display:inline-block; margin-top:13px; background:rgba(15,25,45,.9); color:white; padding:7px 10px; border-radius:8px; font-size:.65rem; font-weight:750; }
+    .project-body { padding:17px 5px 5px; }
+    .project-body h3 { margin:0 0 7px; font-size:1.1rem; }
+    .project-body p { margin:0; color:var(--muted); font-size:.92rem; }
+    .tags { display:flex; gap:7px; flex-wrap:wrap; margin-top:14px; }
+    .tag { border:1px solid var(--line); border-radius:999px; padding:4px 9px; color:var(--muted); font-size:.72rem; }
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .panel { background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:26px; }
+    .panel p { color:var(--muted); }
+    .skills { display:flex; flex-wrap:wrap; gap:9px; margin-top:18px; }
+    .skill { padding:8px 12px; background:var(--panel-2); border-radius:10px; font-weight:700; font-size:.87rem; }
+    .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .step { border-top:2px solid var(--accent); background:rgba(255,255,255,.025); padding:20px; border-radius:0 0 16px 16px; }
+    .step b { color:var(--accent); font-size:.8rem; letter-spacing:.12em; }
+    .step h3 { margin:10px 0 7px; }
+    .step p { color:var(--muted); font-size:.92rem; margin:0; }
+    .contact { display:flex; justify-content:space-between; align-items:center; gap:24px; background:linear-gradient(120deg,rgba(131,240,196,.12),rgba(168,184,255,.1)); border:1px solid var(--line); padding:34px; border-radius:26px; }
+    .contact p { color:var(--muted); margin-bottom:0; }
+    footer { border-top:1px solid var(--line); color:var(--muted); padding:24px 0; font-size:.85rem; }
+    .small-note { font-size:.78rem; color:var(--muted); margin-top:15px; }
+    @media (max-width: 800px) {
+      .hero { grid-template-columns:1fr; padding-top:60px; gap:35px; }
+      .hero-card { max-width:480px; width:100%; margin:auto; }
+      .projects { grid-template-columns:1fr 1fr; }
+      .section-head { display:block; }
+      .section-head p { margin-top:14px; }
+      .steps { grid-template-columns:1fr; }
+    }
+    @media (max-width: 560px) {
+      .wrap { width:min(100% - 28px, var(--max)); }
+      .navlinks { display:none; position:absolute; left:14px; right:14px; top:66px; padding:18px; background:var(--panel); border:1px solid var(--line); border-radius:16px; flex-direction:column; align-items:flex-start; }
+      .navlinks.open { display:flex; }
+      .menu { display:block; }
+      .projects, .about-grid { grid-template-columns:1fr; }
+      .preview { min-height:180px; }
+      .contact { display:block; padding:25px; }
+      .contact .btn { margin-top:20px; }
+      section { padding:52px 0; }
+      .hero { padding:52px 0; }
+      .floating { right:-5px; bottom:18px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="wrap" aria-label="Main navigation">
+      <a class="brand" href="#home">Amrit<span>.</span></a>
+      <div class="navlinks" id="navlinks">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="navlinks">Menu</button>
+    </nav>
+  </header>
+  <main>
+    <div class="wrap hero" id="home">
+      <div>
+        <span class="eyebrow"><span class="dot"></span> FRONT-END WEB DEVELOPER</span>
+        <h1>I build landing pages that look <em>great</em> on every screen.</h1>
+        <p class="lead">I create clean, responsive landing pages for products, small businesses and creative projects using HTML, CSS and JavaScript.</p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">Explore my demos <span aria-hidden="true">↗</span></a>
+          <a class="btn secondary" href="#contact">Contact details</a>
+        </div>
+        <p class="small-note">Portfolio demo • Replace sample projects and contact details with your real work before sharing.</p>
+      </div>
+      <div class="hero-card" aria-label="Illustration of a landing page on a browser">
+        <div class="browser">
+          <div class="browser-top"><i></i><i></i><i></i></div>
+          <div class="mock-hero">
+            <span class="mock-pill">MADE FOR THE WEB</span>
+            <div class="mock-title">A clearer way to grow your business.</div>
+            <p class="mock-copy">Thoughtful design, helpful content, and a clear next step.</p>
+            <span class="mock-button">Get started ↗</span>
+          </div>
+          <div class="mock-grid"><span></span><span></span><span></span></div>
+        </div>
+        <div class="floating">Responsive by design ✓</div>
+      </div>
+    </div>
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="kicker">Selected work</div><h2>Demo projects</h2></div>
+          <p>These are concept designs made to show the kind of landing pages I can build. They are sample projects, not client work.</p>
+        </div>
+        <div class="projects">
+          <article class="project">
+            <div class="preview saas">
+              <div class="preview-label">01 / SaaS concept</div>
+              <h3>Make work feel simpler.</h3>
+              <p>A product page concept focused on benefits and sign-ups.</p>
+              <span class="mini-cta">Explore product ↗</span>
+            </div>
+            <div class="project-body">
+              <h3>Product landing page</h3>
+              <p>A clean layout for a digital tool, app or service.</p>
+              <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+            </div>
+          </article>
+          <article class="project">
+            <div class="preview coach">
+              <div class="preview-label">02 / Education concept</div>
+              <h3>Your next chapter starts here.</h3>
+              <p>A welcoming landing page for a coaching centre.</p>
+              <span class="mini-cta">View courses ↗</span>
+            </div>
+            <div class="project-body">
+              <h3>Coaching institute page</h3>
+              <p>Course highlights, enquiry CTA and student-friendly sections.</p>
+              <div class="tags"><span class="tag">Responsive</span><span class="tag">Forms UI</span><span class="tag">CSS</span></div>
+            </div>
+          </article>
+          <article class="project">
+            <div class="preview agency">
+              <div class="preview-label">03 / Creative concept</div>
+              <h3>Good ideas, made visible.</h3>
+              <p>A portfolio-style page for a small creative studio.</p>
+              <span class="mini-cta">See our work ↗</span>
+            </div>
+            <div class="project-body">
+              <h3>Creative agency page</h3>
+              <p>A visual project showcase with a clear contact section.</p>
+              <div class="tags"><span class="tag">Layout</span><span class="tag">Mobile-first</span><span class="tag">UI design</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="kicker">About</div><h2>Simple, useful, responsive.</h2></div>
+          <p>I focus on websites that are easy to navigate, work on phones, and help visitors understand what to do next.</p>
+        </div>
+        <div class="about-grid">
+          <div class="panel">
+            <h3>What I can build</h3>
+            <p>Landing pages, personal portfolios, product pages and small business websites. Final features depend on the project requirements.</p>
+          </div>
+          <div class="panel">
+            <h3>Tools I use</h3>
+            <p>Core front-end technologies for lightweight, accessible websites.</p>
+            <div class="skills"><span class="skill">HTML5</span><span class="skill">CSS3</span><span class="skill">JavaScript</span><span class="skill">Responsive design</span><span class="skill">GitHub Pages</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="process">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="kicker">How I work</div><h2>A clear process.</h2></div>
+          <p>Clear expectations help both sides know what will be delivered.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><b>STEP 01</b><h3>Understand</h3><p>Confirm the goal, content, design direction and required sections.</p></div>
+          <div class="step"><b>STEP 02</b><h3>Build</h3><p>Create the page and check the layout on mobile and desktop screens.</p></div>
+          <div class="step"><b>STEP 03</b><h3>Review & publish</h3><p>Make agreed revisions, then publish or hand over the files as agreed.</p></div>
+        </div>
+      </div>
+    </section>
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact">
+          <div>
+            <div class="kicker">Contact</div>
+            <h2>Have a project in mind?</h2>
+            <p>Replace this sample contact button with your approved email or professional profile link.</p>
+          </div>
+          <a class="btn primary" id="contactBtn" href="mailto:your-email@example.com">Email me ↗</a>
+        </div>
+        <p class="small-note">Before publishing: update the name, email, project demos and service details. Do not list made-up client work or testimonials.</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+      <span>© <span id="year"></span> Amrit. Portfolio demo.</span>
+      <span>Built with HTML, CSS & JavaScript.</span>
+    </div>
+  </footer>
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navlinks = document.getElementById('navlinks');
+    menuBtn.addEventListener('click', () => {
+      const isOpen = navlinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+    navlinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navlinks.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
